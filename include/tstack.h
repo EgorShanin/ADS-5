@@ -4,11 +4,12 @@
 
 template<typename T, int size>
 class TStack {
-private:
+private: 
     int first = -1;
     int last = size;
-    int arr[size];
-public:
+    int arr[100];
+
+public: 
     bool push(int x) {
         if (first >= (last - 1)) {
             return false;
@@ -20,8 +21,7 @@ public:
     int pop() {
         if (first < 0) {
             return 0;
-        }
-        else {
+        } else {
             int x = arr[first--];
             return x;
         }
