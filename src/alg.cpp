@@ -57,8 +57,8 @@ int charConv(char c) {
 
 int eval(std::string pref) {
     TStack<char, 100> st;
-    for (int i = 0; i < post.length(); i++) {
-        char c = post[i];
+    for (int i = 0; i < pref.length(); i++) {
+        char c = pref[i];
         if (c >= '0' && c <= '9') {
             st.push(charConv(c));
         } else {
