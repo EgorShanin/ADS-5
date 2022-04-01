@@ -4,9 +4,9 @@
 #include "tstack.h"
 
 int prior(char sym) {
-    if (sym == '*' || sym =='/') {
+    if (sym == '*' || sym == '/') {
         return 2;
-    } else if (sym == '+' || sym =='-') {
+    } else if (sym == '+' || sym == '-') {
         return 1;
     } else {
         return 0;
@@ -62,8 +62,8 @@ int eval(std::string pref) {
         if(c >= '0' && c <= '9') {
             st.push(charConv(c));
         } else {
-            int num1=st.pop();
-            int num2=st.pop();
+            int num1 = st.pop();
+            int num2 = st.pop();
             if(c == '+') {
                 st.push(num2 + num1);
             } else if (c == '-') {
