@@ -23,7 +23,7 @@ std::string infx2pstfx(std::string inf) {
         } else if (c == '(') {
             st.push(c);
         } else if (c == ')') {
-            while(st.top() != '('){
+            while (st.top() != '(') {
                 result += st.pop();
             }
             st.pop();
@@ -59,12 +59,12 @@ int eval(std::string pref) {
     TStack<char, 100> st;
     for (int i = 0; i < post.length(); i++) {
         char c = post[i];
-        if(c >= '0' && c <= '9') {
+        if (c >= '0' && c <= '9') {
             st.push(charConv(c));
         } else {
             int num1 = st.pop();
             int num2 = st.pop();
-            if(c == '+') {
+            if (c == '+') {
                 st.push(num2 + num1);
             } else if (c == '-') {
                 st.push(num2 - num1);
