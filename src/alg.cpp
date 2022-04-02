@@ -16,26 +16,30 @@ int prior(char sym) {
 std::string infx2pstfx(std::string inf) {
     std::string result = "";
     TStack<char, 100> st;
-    for (int i = 0; i < inf.length(); i++) {
+    for (int i=0; i<inf.length(); i++) {
         char c = inf[i];
-        if (c >= '0' && c <= '9') {
+        if (c>='0' && c<='9') {
             result += c;
-        } else if (c == '(') {
+            result += ' ';
+        } else if (c=='(') {
             st.push(c);
-        } else if (c == ')') {
+        } else if (c==')') {
             while (st.top() != '(') {
                 result += st.pop();
+                result += ' ';
             }
             st.pop();
         } else {
             while (!st.isEmpty() && prior(c) <= prior(st.top())) {
                 result += st.pop();
+                result += ' ';
             }
             st.push(c);
         }
     }
     while (!st.isEmpty()) {
         result += st.pop();
+        result += ' ';
     }
     return result;
 }
@@ -56,10 +60,22 @@ int charConv(char c) {
 }
 
 int eval(std::string post) {
-    TStack<char, 100> st;
+    std::string post1 = post;
+    int count = 0;
     for (int i = 0; i < post.length(); i++) {
-        char c = post[i];
-        if (c >= '0' && c <= '9') {
+        if (post[i] == ' ') {
+            continue;
+        } else {
+            post1[count] = post[i];
+            count++;
+        }
+    }
+    TStack<char, 100> st;
+    for (int i = 0; i < post1.length(); i++) {
+        char c = post1[i];
+        if (c==' ') {
+            break;
+        } else if (c >= '0' && c <= '9') {
             st.push(charConv(c));
         } else {
             int num1 = st.pop();
