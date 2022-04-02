@@ -41,6 +41,7 @@ std::string infx2pstfx(std::string inf) {
         result += st.pop();
         result += ' ';
     }
+    result = result.substr(0, result.length() - 1);
     return result;
 }
 
