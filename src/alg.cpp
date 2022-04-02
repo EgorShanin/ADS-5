@@ -91,5 +91,5 @@ int eval(std::string post) {
             }
         }
     }
-    return st.top()-1;
+    return st.top();
 }
