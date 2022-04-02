@@ -16,14 +16,14 @@ int prior(char sym) {
 std::string infx2pstfx(std::string inf) {
     std::string result = "";
     TStack<char, 100> st;
-    for (int i=0; i<inf.length(); i++) {
+    for (int i = 0; i < inf.length(); i++) {
         char c = inf[i];
-        if (c>='0' && c<='9') {
+        if (c >= '0' && c <= '9') {
             result += c;
             result += ' ';
-        } else if (c=='(') {
+        } else if (c == '(') {
             st.push(c);
-        } else if (c==')') {
+        } else if (c == ')') {
             while (st.top() != '(') {
                 result += st.pop();
                 result += ' ';
@@ -73,7 +73,7 @@ int eval(std::string post) {
     TStack<char, 100> st;
     for (int i = 0; i < post1.length(); i++) {
         char c = post1[i];
-        if (c==' ') {
+        if (c == ' ') {
             break;
         } else if (c >= '0' && c <= '9') {
             st.push(charConv(c));
