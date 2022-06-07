@@ -88,7 +88,7 @@ int eval(std::string post) {
             } else if (c == '/') {
                 st.push(num2 / num1);
             } else if (c == '*') {
-                st.push(num2 * num1);
+                st.push(num2 * num1)
             }
         }
     }
